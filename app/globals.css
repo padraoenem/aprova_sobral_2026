@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-navy: #0050a0;
+  --color-navy-rgb: 0, 80, 160;
+  --color-cream: #f6f3ec;
+  --color-accent1: #0ea5d9;
+  --color-accent2: #f2940d;
+  --color-cta: #d6285c;
+  --color-cta-dark: #a81d47;
+  --color-accent3: #3fa84a;
+  --color-highlight: #f5cb00;
+  --color-body: #0b3d75;
+  --color-muted: #5b6e93;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --breakpoint-md: 900px;
+  --color-navy: var(--color-navy);
+  --color-cream: var(--color-cream);
+  --color-accent1: var(--color-accent1);
+  --color-accent2: var(--color-accent2);
+  --color-cta: var(--color-cta);
+  --color-cta-dark: var(--color-cta-dark);
+  --color-accent3: var(--color-accent3);
+  --color-highlight: var(--color-highlight);
+  --color-body: var(--color-body);
+  --color-muted: var(--color-muted);
+  --font-heading: var(--font-baloo2);
+  --font-label: var(--font-archivo);
+  --font-body: var(--font-nunito);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-body);
+}
+
+@keyframes ab-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ab-marquee-track {
+  animation: ab-marquee 26s linear infinite;
+}
+
+@keyframes ab-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.ab-float {
+  animation: ab-float 7s ease-in-out infinite;
+}
+
+.ab-float-slow {
+  animation: ab-float 9s ease-in-out infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-marquee-track,
+  .ab-float,
+  .ab-float-slow {
+    animation-play-state: paused;
+  }
+
+  * {
+    transition-duration: 0.001ms !important;
+  }
 }
